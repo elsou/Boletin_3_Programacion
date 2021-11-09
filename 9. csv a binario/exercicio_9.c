@@ -14,6 +14,7 @@ typedef struct dvec{
   int size;
 } dvec;
 
+//Declaración de funcións
 dvec csv_to_WeatherData(FILE *file_r);
 void WeatherData_to_binary(dvec data, FILE *file_w);
 void skipLine(FILE *file_r);
@@ -22,25 +23,29 @@ void skipLine(FILE *file_r);
 
 int main()
 {
+    //Ábrese o ficheiro .csv para lectura
     char *datos = "weatherdata-420-72.csv";
     FILE *fpr = fopen(datos, "r");
     if (fpr == NULL){
         printf("Erro: O arquivo %s non foi aberto", datos);
         return 1;
     }
-
-    dvec weatherdata_420_72;
-    weatherdata_420_72 = csv_to_WeatherData(fpr);
+    
+    //Os datos almacénanse nun vector dinámico de estruturas tipo WeatherData
+    dvec weatherdata1;
+    weatherdata1 = csv_to_WeatherData(fpr);
     fclose(fpr);
-
-    char *datos_bin = "C:\\Users\\Usuario\\CLionProjects\\weather_projects\\weather_data\\weatherdata-420-72.dat";
+    
+    //Ábrese o ficheiro binario en modo de escritura
+    char *datos_bin = "weatherdata-420-72.dat";
     FILE *bin = fopen(datos_bin,"wb+");
     if(bin == NULL){
         printf("Erro: O arquivo %s non foi aberto", datos_bin);
         return 1;
     }
-
-    WeatherData_to_binary(weatherdata_420_72, bin);
+    
+    //Gárdase a información de weatherdata1 no arquivo binario
+    WeatherData_to_binary(weatherdata1, bin);
 
     fclose(bin);
 
