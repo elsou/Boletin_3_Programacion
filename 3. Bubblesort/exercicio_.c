@@ -5,12 +5,9 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "dvectors.h"
 
-//A estrutura dvec (Dynamic Vector) garda o tamaño do propio vector dinámico para facilitar o seu manexo
-
-
+//Declaración de funcións
 void ordenar(dvec dvector);
 dvec input_to_vector();
 void print_vector(dvec dvector);
@@ -19,18 +16,19 @@ void print_vector(dvec dvector);
 
 int main(){
 
+    //O usuario introduce unha serie de enteiros que se almacenan nun vector dinámico
     dvec dvector1 = new_dvec();
-
-    printf("\nEscriba os seus elementos separados por comas:\n");
-
+    printf("\nEste programa ordena de menor a maior os elementos dun vector mediante o método da burbulla.\n");
+    printf("\nEscriba os seus elementos (enteiros) separados por comas:\n");
     dvector1 = input_to_vector();
-
     printf("Vector introducido: ");
     print_vector(dvector1);
     printf("\n");
-
+    
+    //Os datos ordénanse de menor a maior polo algoritmo da burbulla (Bubble Sort)
     ordenar(dvector1);
-
+    
+    //Imprímese o resultado
     printf("\n\nVector ordenado:");
     print_vector(dvector1);
 
