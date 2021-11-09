@@ -1,5 +1,6 @@
-#ifndef INC_3__BUBBLESORT_DVECTORS_H
-#define INC_3__BUBBLESORT_DVECTORS_H
+//dvectors.h
+
+#include <stdlib.h>
 
 //A estrutura dvec contén o vector e o seu tamaño para facilitar o seu manexo
 typedef struct dvec{
