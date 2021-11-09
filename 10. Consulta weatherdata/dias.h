@@ -1,3 +1,5 @@
+//dias.h
+
 int meses[13] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 //Comproba se un ano é bisesto ou non
@@ -49,19 +51,19 @@ Date get_date(){
     Date temp = {.day = 2, .month = 1, .year = 2000};
     do{
         if(data_invalida(temp).day || data_invalida(temp).month || data_invalida(temp).year){
+            //Isto imprímese se houbo algún dato incorrecto na anterior volta
             printf("\nVolva intentalo");
             if(data_invalida(temp).day) printf(" (dia non valido)");
-            if(data_invalida(temp).month) printf(" (mes non valido)"); //Isto imprímese se houbo algún dato incorrecto na anterior volta
+            if(data_invalida(temp).month) printf(" (mes non valido)"); 
             if(data_invalida(temp).year) printf(" (ano non valido)");
             printf(":\n");
         }else{
-            printf("Escriba a data en formato dd/mm/aaaa (entre o ano 2000 e o 2010):\n"); //Isto imprímese a primeira vez que se pregunta a data
+            //Isto imprímese a primeira vez que se pregunta a data
+            printf("Escriba a data en formato dd/mm/aaaa (entre o ano 2000 e o 2010):\n"); 
         }
 
         scanf("%d/%d/%d", &temp.day, &temp.month, &temp.year);
-
         //Este bucle convirte input (string con formato "dd/mm/aaaa" a un vector de int (data)
-
     }while(data_invalida(temp).day || data_invalida(temp).month || data_invalida(temp).year);
     return temp;
 }
