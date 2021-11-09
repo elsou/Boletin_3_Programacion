@@ -1,5 +1,4 @@
-#ifndef WEATHER3_WEATHER_H
-#define WEATHER3_WEATHER_H
+//weather.h
 
 typedef struct Date{
     int day;
@@ -27,5 +26,3 @@ void print_weatherdata(WeatherData wdata){
     printf("\n   Elevation: %d\n   Max. temperature: %f\n   Min. temperature: %f", wdata.elevation, wdata.max_temp, wdata.min_temp);
     printf("\n   Precipitation: %f\n   Wind: %f\n   Relative humidity: %f\n   Solar: %f\n}\n", wdata.precipitation, wdata.wind, wdata.rel_humidity, wdata.solar);
 }
-
-#endif //WEATHER3_WEATHER_H
