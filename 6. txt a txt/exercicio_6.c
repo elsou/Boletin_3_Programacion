@@ -5,15 +5,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct dvec{
-    int *vector;
-    int size;
-} dvec;
+#include "dvectors.h"
 
 //Declaración de funcións
 dvec file_to_vector(FILE *file);
-dvec increase_size(dvec dvector);
 
 int calcular_max(dvec dvector);
 int calcular_min(dvec dvector);
