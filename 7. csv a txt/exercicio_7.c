@@ -8,7 +8,8 @@
 void csv_to_txt(FILE *file_r, FILE *file_w, char* name_r, char* name_w);
 void skipLine(FILE *file_r);
 
-int main(){
+int main()
+{
     //Abre os arquivos .csv e .txt, en modo de lectura e escritura, respectivamente
     char *datos = "weatherdata-420-72.csv";
     char *datos_txt = "weatherdata-420-72.txt";
@@ -32,14 +33,16 @@ int main(){
 }
 
 //Imprime o contido do ficheiro .csv nun ficheiro .txt, sen caracteres '"', ',' ou '/' e sen a primeira liña
-void csv_to_txt(FILE *file_r, FILE *file_w, char* name_r, char* name_w){
+void csv_to_txt(FILE *file_r, FILE *file_w, char* name_r, char* name_w) {
     printf("\nCopiando datos de \"%s\" a \"%s\"... ", name_r, name_w);
     skipLine(file_r);
+    
     char temp;
     do{
         temp = fgetc(file_r);
         if(temp != '"' && temp != ',' && temp != '/') fprintf(file_w, "%c", temp);
     }while(temp != EOF);
+    
     printf("[completado]\n");
 }
 
