@@ -1,5 +1,5 @@
 /*  Boletín 3
- * Exercicio 5: Enteiros to vector
+ * Exercicio 6: -txt a .txt
  * Autor: Daniel Souto Pazó
 */
 
@@ -18,27 +18,31 @@ float calcular_media(dvec dvector);
 //----------------------------------------------------------//
 
 int main(){
+    //Abre o arquivo .txt en modo lectura
     char *datos = "datos.txt";
     FILE *fpr = fopen(datos, "rt");
     if (fpr == NULL){
         printf("Erro: o arquivo %s non foi aberto", datos);
         return 1;
     }
-
+    
+    //Pasa os datos do arquivo .txt a un vector dinámico
     printf("\nLendo enteiros de \"%s\"... ", datos);
     dvec dvector1;
     dvector1 = file_to_vector(fpr);
     printf("[completado]");
 
     fclose(fpr);
-
+    
+    //Abre outro arquivo .txt en modo escritura
     char *resultados = "datos_ordenados.txt";
-    FILE *fpw = fopen(resultados, "w+");
+    FILE *fpw = fopen(resultados, "wt");
     if(fpw == NULL){
         printf("Error: could not open file %s", resultados);
         return 1;
     }
-
+    
+    //Garda os datos indicados (máximo, mínimo, media) no arquivo .txt
     printf("\nGardando resultados en \"%s\"... ", resultados);
     fprintf(fpw,"Maximo: %d\n", calcular_max(dvector1));
     fprintf(fpw,"Minimo: %d\n", calcular_min(dvector1));
@@ -56,18 +60,10 @@ dvec file_to_vector(FILE *file){
     dvector.size = 0;
     dvector.vector= (int*) malloc(sizeof(int));
     do{
-        dvector = increase_size(dvector);
+        dvector = increase_size(dvector, 1);
     }while(fscanf(file, "%d,", &dvector.vector[dvector.size-1]) != EOF);
     dvector.size--;
     return dvector;
-}
-
-//Devolve un punteiro a unha copia do vector dado e con un elemento máis
-dvec increase_size(dvec dvector){
-    dvec temp = dvector;
-    temp.size++;
-    temp.vector = realloc(temp.vector, sizeof(int)*temp.size);
-    return temp;
 }
 
 //Devolve a maior enteiro do vector proporcionado
