@@ -1,3 +1,4 @@
+
 /*
  * Boletín 3
  * Exercicio 3: Bubble sort
@@ -14,8 +15,8 @@ void print_vector(dvec dvector);
 
 //-------------------------------------------------------//
 
-int main(){
-
+int main()
+{
     //O usuario introduce unha serie de enteiros que se almacenan nun vector dinámico
     dvec dvector1 = new_dvec();
     printf("\nEste programa ordena de menor a maior os elementos dun vector mediante o método da burbulla.\n");
@@ -63,10 +64,7 @@ void ordenar(dvec dvector){
 dvec input_to_vector(){
     dvec dvector;
     scanf("%d", &dvector.vector[0]);
-    while(scanf(",%d", &dvector.vector[dvector.size]) != 0){
+    while(scanf(",%d", &dvector.vector[dvector.size]) != 0)
         dvector = increase_size(dvector, 1);
-    }
     return dvector;
 }
-
-
