@@ -9,21 +9,22 @@ void csv_to_txt(FILE *file_r, FILE *file_w, char* name_r, char* name_w);
 void skipLine(FILE *file_r);
 
 int main(){
-
+    //Abre os arquivos .csv e .txt, en modo de lectura e escritura, respectivamente
     char *datos = "weatherdata-420-72.csv";
     char *datos_txt = "weatherdata-420-72.txt";
-    FILE *fpr = fopen(datos, "r");
-    FILE *fpw = fopen(datos_txt, "w");
+    FILE *fpr = fopen(datos, "rt");
+    FILE *fpw = fopen(datos_txt, "wt");
     if (fpr == NULL){
-        printf("Error: could not open file %s", datos);
+        printf("Erro: o arquivo %s non foi aberto", datos);
         return 1;
     } if(fpw == NULL){
-        printf("Error: could not open file %s", datos_txt);
+        printf("Erro: o arquivo %s non foi aberto", datos_txt);
         return 1;
     }
-
+    
+    //Imprime o contido do ficheiro .csv nun ficheiro .txt, sen caracteres '"', ',' ou '/' e sen a primeira liña
     csv_to_txt(fpr, fpw, datos, datos_txt);
-
+    
     fclose(fpw);
     fclose(fpr);
 
@@ -37,9 +38,7 @@ void csv_to_txt(FILE *file_r, FILE *file_w, char* name_r, char* name_w){
     char temp;
     do{
         temp = fgetc(file_r);
-        if(temp != '"' && temp != ',' && temp != '/'){
-            fprintf(file_w, "%c", temp);
-        }
+        if(temp != '"' && temp != ',' && temp != '/') fprintf(file_w, "%c", temp);
     }while(temp != EOF);
     printf("[completado]\n");
 }
