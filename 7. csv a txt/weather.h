@@ -1,13 +1,13 @@
 //weather.h
 
-typedef struct Date{
+typedef struct Date {
     int day;
     int month;
     int year;
 } Date;
 
 
-typedef struct WeatherData{
+typedef struct WeatherData {
     Date date;
     float longitude;
     float latitude;
