@@ -1,3 +1,4 @@
+
 /*
  * Boletín 3
  * Exercicio 9: Pasar de .csv a .dat
@@ -9,7 +10,7 @@
 #include "weather.h"
 
 //A estrutura dvec (Dynamic Vector) garda o tamaño do propio vector dinámico para facilitar o seu manexo
-typedef struct dvec{
+typedef struct dvec {
   WeatherData *vector;
   int size;
 } dvec;
@@ -54,7 +55,7 @@ int main()
 }
 
 //Devolve un punteiro a un array dinámico de WeatherData cos datos do ficheiro csv (file_r)
-dvec csv_to_WeatherData(FILE *file_r){
+dvec csv_to_WeatherData(FILE *file_r) {
     dvec data;
     data.vector = (WeatherData *) malloc(sizeof(WeatherData));
     data.size = 1;
@@ -70,7 +71,7 @@ dvec csv_to_WeatherData(FILE *file_r){
 }
 
 //Escribe os datos do array proporcionado nun ficheiro binario .dat
-void WeatherData_to_binary(dvec data, FILE *file_w){
+void WeatherData_to_binary(dvec data, FILE *file_w) {
     printf("\nPasando de WeatherData a .dat... ");
     for(int i = 0; i < data.size; i++){
         fwrite(&data.vector[i].date, sizeof(Date), 1, file_w);
@@ -88,7 +89,7 @@ void WeatherData_to_binary(dvec data, FILE *file_w){
 }
 
 //Move o punto de lectura á seguinte liña do ficheiro .csv
-void skipLine(FILE *file_r){
+void skipLine(FILE *file_r) {
     char c;
     do { c = fgetc(file_r); } while (c != '\n');
 }
