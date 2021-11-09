@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <math.h>
 
+//Declaración da función
 int gcd(int a, int b);
 
 int main(){
