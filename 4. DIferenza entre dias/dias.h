@@ -56,4 +56,10 @@ int days_in_years(int y1, int y2){
     return days;
 }
 
-#endif //DISTANCIA_DIAS_H
+//Intercambia a posición de memoria almacenada en cada un dos punteiros
+void trocar(Date *dia1, Date *dia2){
+    Date temp;
+    temp = *dia1;
+    *dia1 = *dia2;
+    *dia2 = temp;
+}
