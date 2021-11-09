@@ -1,5 +1,5 @@
-#ifndef WEATHER_WEATHER_H
-#define WEATHER_WEATHER_H
+//weather.h
+
 typedef struct Date{
     int day;
     int month;
@@ -19,5 +19,3 @@ typedef struct WeatherData{
     float rel_humidity;
     float solar;
 } WeatherData;
-
-#endif //WEATHER_WEATHER_H
