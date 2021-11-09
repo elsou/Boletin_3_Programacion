@@ -9,12 +9,6 @@
 #include <stdlib.h>
 #include "weather.h"
 
-//A estrutura dvec (Dynamic Vector) garda o tamaño do propio vector dinámico para facilitar o seu manexo
-typedef struct dvec {
-  WeatherData *vector;
-  int size;
-} dvec;
-
 //Declaración de funcións
 dvec csv_to_WeatherData(FILE *file_r);
 void WeatherData_to_binary(dvec data, FILE *file_w);
