@@ -6,7 +6,9 @@
 #include <stdio.h>
 #include "dvectors.h"
 
+//Declaración de funcións
 dvec file_to_vector(FILE *file);
+
 int calcular_max(dvec dvector);
 int calcular_min(dvec dvector);
 float calcular_media(dvec dvector);
@@ -14,16 +16,19 @@ float calcular_media(dvec dvector);
 //----------------------------------------------------------//
 
 int main(){
+    //Abre o ficheiro .txt en modo de lectura
     char *filename = "enteiros.txt";
     FILE *fp = fopen(filename, "rt");
     if (fp == NULL){
         printf("Erro: o arquivo %s non foi aberto", filename);
         return 1;
     }
-
+    
+    //Pasa a información do arquivo a un vector dinámico
     dvec dvector1;
     dvector1 = file_to_vector(fp);
-
+    
+    //Devolve os valores indicados
     printf("\nPara o vector ");
     print_vector(dvector1);
     printf(":\n");
