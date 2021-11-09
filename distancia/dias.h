@@ -1,5 +1,4 @@
-#ifndef DISTANCIA_DIAS_H
-#define DISTANCIA_DIAS_H
+//dias.h
 
 typedef struct Date
 {
@@ -40,6 +39,7 @@ int days_so_far(Date d){
     return resultado;
 }
 
+//Calcula os días que van dende a data dada e o final do ano
 int days_to_come(Date d){
     int resultado = 365 + bisesto(d.year);
     resultado -= days_so_far(d);
