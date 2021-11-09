@@ -1,5 +1,5 @@
-#ifndef INTSTOVECTOR_DVECTORS_H
-#define INTSTOVECTOR_DVECTORS_H
+//dvectors.h
+
 #include <stdlib.h>
 
 //A estrutura dvec contén o vector e o seu tamaño para facilitar o seu manexo
@@ -30,5 +30,3 @@ void print_vector(dvec dvector){
     }
     printf(")");
 }
-
-#endif //INTSTOVECTOR_DVECTORS_H
