@@ -26,7 +26,7 @@ int main()
 }
 
 //Utiliza o algoritmo de Euclides e devolve o máximo común divisor dos dous valores introducidos
-gcd(int a, int b) {
+int gcd(int a, int b) {
     int resultado, temp;
     while(a && b != 0){
         if(abs(b) > abs(a)){
