@@ -10,11 +10,8 @@ int meses[13] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 //Comproba se un ano é bisesto ou non
 int bisesto(int ano) {
-    if(((ano%4 == 0) & (ano%100 != 0)) || (ano%400 == 0)){
-        return 1;
-    }else{
-        return 0;
-    }
+    if(((ano%4 == 0) & (ano%100 != 0)) || (ano%400 == 0)) return 1;
+    else return 0;
 }
 
 //Comproba se algún dos elementos da data son incorrectos, devolvendo un 1 se o son
@@ -29,12 +26,13 @@ Date data_invalida(Date data) {
 //Calcula os días que van dende o comezo do ano para unha data dada
 int days_so_far(Date d) {
     int resultado = 0;
+    
     meses[1] += bisesto(d.year);
-    for(int i = 0; i < d.month-1; i++){
-        resultado = resultado + meses[i];
-    }
+    for(int i = 0; i < d.month-1; i++)
+        resultado += meses[i];
     resultado = resultado + d.day;
     meses[1] -= bisesto(d.year);
+    
     return resultado;
 }
 
