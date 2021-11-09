@@ -1,3 +1,4 @@
+
 /*
  * Boletín 3
  * Exercicio 10: Ler arquivo binario
@@ -13,7 +14,8 @@
 WeatherData consulta_por_data(FILE* file, Date d);
 float consulta_precip_media(FILE* file, Date d1, Date d2);
 
-int main(){
+int main()
+{
     //Abre o ficheiro .dat en modo lectura binaria
     char *datos_bin = "weatherdata-420-72.dat";
     FILE *bin = fopen(datos_bin,"rb");
@@ -47,7 +49,8 @@ int main(){
                 printf("\nA precipitacion media entre o %d/%d/%d e o %d/%d/%d foi de %f l/m^2\n", data1.day, data1.month, data1.year, data2.day, data2.month, data2.year, consulta_precip_media(bin, data1, data2));
             }else if(r == 1){
                 print_weatherdata(consulta_por_data(bin, data1));
-            }else printf("Input non valida.\n");
+            }else 
+                printf("Input non valida.\n");
         }
     }while(r != 3);
 
