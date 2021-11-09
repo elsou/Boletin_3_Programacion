@@ -1,12 +1,13 @@
 //weather.h
 
+//A estutura Date permite un fácil manexo de datas
 typedef struct Date{
     int day;
     int month;
     int year;
 } Date;
 
-
+//A estutura Date permite almacenar os datos metereolóxicos con comodidade
 typedef struct WeatherData{
     Date date;
     float longitude;
