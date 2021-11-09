@@ -8,18 +8,21 @@
 #include "weather.h"
 #include "dias.h"
 
+
+//Declaración de funcións
 WeatherData consulta_por_data(FILE* file, Date d);
 float consulta_precip_media(FILE* file, Date d1, Date d2);
 
 int main(){
-
-    char *datos_bin = "C:\\Users\\Usuario\\CLionProjects\\weather_projects\\weather_data\\weatherdata-420-72.dat";
+    //Abre o ficheiro .dat en modo lectura binaria
+    char *datos_bin = "weatherdata-420-72.dat";
     FILE *bin = fopen(datos_bin,"rb");
     if(bin == NULL){
         printf("Erro: O arquivo %s non foi aberto", datos_bin);
         return 1;
     }
-
+    
+    //Este bucle repítese ata que o usuario decide finalizar as consultas.
     int r;
     do{
         printf("\n-Se desexa consultar os datos metereoloxicos dun dia concreto, pulse 1.\n");
@@ -34,6 +37,7 @@ int main(){
 
             if(r == 2){
                 data2 = get_date();
+                //Ordenar as datas por orde cronolóxica axuda a simplificar os cálculos
                 if(data1.year*10000 + data1.month*100 + data1.day > data2.year*10000 + data2.month*100 + data2.day){
                     Date temp;
                     temp = data1;
