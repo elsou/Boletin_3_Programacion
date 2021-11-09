@@ -37,7 +37,7 @@ int main()
 }
 
 //Utiliza o método da burbulla para ordenar o vector proporcionado
-void ordenar(dvec dvector){
+void ordenar(dvec dvector) {
     int done = 0, anterior, temp;
     int v = 1;
     while(!done){
@@ -61,7 +61,7 @@ void ordenar(dvec dvector){
 }
 
 //Devolve un vector de enteiros a partir da input dada polo usuario
-dvec input_to_vector(){
+dvec input_to_vector() {
     dvec dvector;
     scanf("%d", &dvector.vector[0]);
     while(scanf(",%d", &dvector.vector[dvector.size]) != 0)
