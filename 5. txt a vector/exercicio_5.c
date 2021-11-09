@@ -25,7 +25,7 @@ int main(){
     }
     
     //Pasa a información do arquivo a un vector dinámico
-    dvec dvector1;
+    dvec dvector1 = new_dvec();
     dvector1 = file_to_vector(fp);
     
     //Devolve os valores indicados
