@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "weather.h"
+#include "dvectors.h"
 
 //Declaración de funcións
 dvec csv_to_WeatherData(FILE *file_r);
@@ -27,7 +28,7 @@ int main()
     }
     
     //Os datos almacénanse nun vector dinámico de estruturas tipo WeatherData
-    dvec weatherdata1;
+    dvec weatherdata1 = new_dvecto();
     weatherdata1 = csv_to_WeatherData(fpr);
     fclose(fpr);
     
