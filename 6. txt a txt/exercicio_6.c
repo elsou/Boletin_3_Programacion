@@ -11,17 +11,14 @@ typedef struct dvec{
     int size;
 } dvec;
 
+//Declaración de funcións
 dvec file_to_vector(FILE *file);
+dvec increase_size(dvec dvector);
+
 int calcular_max(dvec dvector);
 int calcular_min(dvec dvector);
 float calcular_media(dvec dvector);
 
-dvec increase_size(dvec dvector){
-    dvec temp = dvector;
-    temp.size++;
-    temp.vector = realloc(temp.vector, sizeof(int)*temp.size);
-    return temp;
-}
 
 //----------------------------------------------------------//
 
@@ -70,6 +67,14 @@ dvec file_to_vector(FILE *file){
     return dvector;
 }
 
+//Devolve un punteiro a unha copia do vector dado e con un elemento máis
+dvec increase_size(dvec dvector){
+    dvec temp = dvector;
+    temp.size++;
+    temp.vector = realloc(temp.vector, sizeof(int)*temp.size);
+    return temp;
+}
+
 //Devolve a maior enteiro do vector proporcionado
 int calcular_max(dvec dvector){
     int max = dvector.vector[0];
@@ -100,3 +105,4 @@ float calcular_media(dvec dvector){
     }
     return media;
 }
+
