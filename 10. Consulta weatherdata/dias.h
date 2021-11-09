@@ -3,37 +3,32 @@
 int meses[13] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 //Comproba se un ano é bisesto ou non
-int bisesto(int ano){
-    if(((ano%4 == 0) & (ano%100 != 0)) || (ano%400 == 0)){
-        return 1;
-    }else{
-        return 0;
-    }
+int bisesto(int ano) {
+    if(((ano%4 == 0) & (ano%100 != 0)) || (ano%400 == 0)) return 1;
+    else  return 0;
 }
 
 //Conta os días que van dende o comezo do ano para unha data dada
-int days_in_year(Date d){
+int days_in_year(Date d) {
     int resultado = 0;
-    if(bisesto(d.year)){
-        meses[1]++;
-    }
+    
+    if(bisesto(d.year))  meses[1]++;
     for(int i = 0; i < d.month-1; i++){
         resultado = resultado + meses[i];
-    }
     resultado = resultado + d.day;
+        
     return resultado;
 }
 
 //Conta os días que van dende o 01/01/2000
-int days_since_2000(Date d){
+int days_since_2000(Date d) {
     int days = days_in_year(d);
+    
     for(int i = 2000; i  < d.year; i++){
-        if(bisesto(i)){
-            days = days + 366;
-        }else{
-            days = days + 365;
-        }
+        if(bisesto(i))  days += 366;
+        else            days += 365;
     }
+    
     return days;
 }
 
@@ -65,5 +60,6 @@ Date get_date(){
         scanf("%d/%d/%d", &temp.day, &temp.month, &temp.year);
         //Este bucle convirte input (string con formato "dd/mm/aaaa" a un vector de int (data)
     }while(data_invalida(temp).day || data_invalida(temp).month || data_invalida(temp).year);
+    
     return temp;
 }
