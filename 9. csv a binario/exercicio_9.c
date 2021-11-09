@@ -28,7 +28,7 @@ int main()
     }
     
     //Os datos almacénanse nun vector dinámico de estruturas tipo WeatherData
-    dvec weatherdata1 = new_dvecto();
+    dvec weatherdata1 = new_dvec();
     weatherdata1 = csv_to_WeatherData(fpr);
     fclose(fpr);
     
@@ -44,22 +44,17 @@ int main()
     WeatherData_to_binary(weatherdata1, bin);
 
     fclose(bin);
-
-
     return 0;
 }
 
 //Devolve un punteiro a un array dinámico de WeatherData cos datos do ficheiro csv (file_r)
 dvec csv_to_WeatherData(FILE *file_r) {
-    dvec data;
-    data.vector = (WeatherData *) malloc(sizeof(WeatherData));
-    data.size = 1;
+    dvec data = new_devec();
     printf("\nPasando de .csv a WeatherData... ");
 
     skipLine(file_r);
     while((fscanf(file_r, "\"%d/%d/%d\",\"%f\",\"%f\",\"%d\",\"%f\",\"%f\",\"%f\",\"%f\",\"%f\",\"%f\",\n", &data.vector[data.size-1].date.month, &data.vector[data.size-1].date.day, &data.vector[data.size-1].date.year, &data.vector[data.size-1].longitude, &data.vector[data.size-1].latitude, &data.vector[data.size-1].elevation, &data.vector[data.size-1].max_temp, &data.vector[data.size-1].min_temp, &data.vector[data.size-1].precipitation, &data.vector[data.size-1].wind, &data.vector[data.size-1].rel_humidity, &data.vector[data.size-1].solar)) != EOF){
-        data.size++;
-        data.vector = realloc(data.vector, sizeof(WeatherData) * data.size);
+        data = increase_size(data, 1);
     }
     printf("[completado]");
     return data;
