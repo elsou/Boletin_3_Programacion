@@ -56,7 +56,7 @@ int main(){
 
 //Devolve un punteiro a un vector no que garda os enteiros contidos no arquivo .txt
 dvec file_to_vector(FILE *file){
-    dvec dvector;
+    dvec dvector = new_vec();
     dvector.size = 0;
     dvector.vector= (int*) malloc(sizeof(int));
     do{
