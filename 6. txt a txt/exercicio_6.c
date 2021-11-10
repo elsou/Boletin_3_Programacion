@@ -58,7 +58,6 @@ int main(){
 dvec file_to_vector(FILE *file){
     dvec dvector = new_vec();
     dvector.size = 0;
-    dvector.vector= (int*) malloc(sizeof(int));
     do{
         dvector = increase_size(dvector, 1);
     }while(fscanf(file, "%d,", &dvector.vector[dvector.size-1]) != EOF);
