@@ -12,6 +12,7 @@
 void ordenar(dvec dvector);
 dvec input_to_vector();
 void print_vector(dvec dvector);
+void trocar(int *a, int *b);
 
 //-------------------------------------------------------//
 
@@ -37,25 +38,21 @@ int main()
 
 //Utiliza o método da burbulla para ordenar o vector proporcionado
 void ordenar(dvec dvector) {
-    int done = 0, anterior, temp;
-    int v = 1;
+    int done = 0;
+    int v = 0;
     while(!done){
-        anterior = dvector.vector[0];
+        v++;
         done = 1;
-        for(int i = 0; i < dvector.size; i++){
-            if(anterior > dvector.vector[i]){
-                temp = dvector.vector[i-1];
-                dvector.vector[i-1] = dvector.vector[i];
-                dvector.vector[i] = temp;
+        for(int i = 1; i < dvector.size; i++){
+            if(dvector.vector[i-1] > dvector.vector[i]){
+                trocar(&dvector.vector[i], &dvector.vector[i-1]);
                 done = 0;
             }
-            anterior = dvector.vector[i];
         }
-        if(!done){
+        if(!done) {
             printf("\nVolta %i: ", v);
             print_vector(dvector);
         }
-        v++;
     }
 }
 
@@ -63,7 +60,17 @@ void ordenar(dvec dvector) {
 dvec input_to_vector() {
     dvec dvector = new_dvec();
     scanf("%d", &dvector.vector[0]);
-    while(scanf(",%d", &dvector.vector[dvector.size]) != 0)
+    while(scanf(",%d", &dvector.vector[dvector.size-1]) != 0) {
         dvector = increase_size(dvector, 1);
+    }
+
     return dvector;
+}
+
+//Intercambia a posición de memoria almacenada en cada un dos punteiros
+void trocar(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
