@@ -63,3 +63,11 @@ Date get_date(){
     
     return temp;
 }
+
+//Intercambia a posición de memoria almacenada en cada un dos punteiros
+void trocar(Date *dia1, Date *dia2) {
+    Date temp;
+    temp = *dia1;
+    *dia1 = *dia2;
+    *dia2 = temp;
+}
