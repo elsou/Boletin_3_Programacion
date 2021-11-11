@@ -6,7 +6,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "weather.h"
 #include "dvectors.h"
 
@@ -26,12 +25,12 @@ int main()
         printf("Erro: O arquivo %s non foi aberto", datos);
         return 1;
     }
-    
+
     //Os datos almacénanse nun vector dinámico de estruturas tipo WeatherData
     dvec weatherdata1 = new_dvec();
     weatherdata1 = csv_to_WeatherData(fpr);
     fclose(fpr);
-    
+
     //Ábrese o ficheiro binario en modo de escritura
     char *datos_bin = "weatherdata-420-72.dat";
     FILE *bin = fopen(datos_bin,"wb+");
@@ -39,7 +38,7 @@ int main()
         printf("Erro: O arquivo %s non foi aberto", datos_bin);
         return 1;
     }
-    
+
     //Gárdase a información de weatherdata1 no arquivo binario
     WeatherData_to_binary(weatherdata1, bin);
 
@@ -49,13 +48,24 @@ int main()
 
 //Devolve un punteiro a un array dinámico de WeatherData cos datos do ficheiro csv (file_r)
 dvec csv_to_WeatherData(FILE *file_r) {
-    dvec data = new_devec();
+    dvec data = new_dvec();
     printf("\nPasando de .csv a WeatherData... ");
 
     skipLine(file_r);
-    while((fscanf(file_r, "\"%d/%d/%d\",\"%f\",\"%f\",\"%d\",\"%f\",\"%f\",\"%f\",\"%f\",\"%f\",\"%f\",\n", &data.vector[data.size-1].date.month, &data.vector[data.size-1].date.day, &data.vector[data.size-1].date.year, &data.vector[data.size-1].longitude, &data.vector[data.size-1].latitude, &data.vector[data.size-1].elevation, &data.vector[data.size-1].max_temp, &data.vector[data.size-1].min_temp, &data.vector[data.size-1].precipitation, &data.vector[data.size-1].wind, &data.vector[data.size-1].rel_humidity, &data.vector[data.size-1].solar)) != EOF){
-        data = increase_size(data, 1);
-    }
+    while((fscanf(file_r, "\"%d/%d/%d\",\"%f\",\"%f\",\"%d\",\"%f\",\"%f\",\"%f\",\"%f\",\"%f\",\"%f\",\n",
+                  &data.vector[data.size-1].date.month,
+                  &data.vector[data.size-1].date.day,
+                  &data.vector[data.size-1].date.year,
+                  &data.vector[data.size-1].longitude,
+                  &data.vector[data.size-1].latitude,
+                  &data.vector[data.size-1].elevation,
+                  &data.vector[data.size-1].max_temp,
+                  &data.vector[data.size-1].min_temp,
+                  &data.vector[data.size-1].precipitation,
+                  &data.vector[data.size-1].wind,
+                  &data.vector[data.size-1].rel_humidity,
+                  &data.vector[data.size-1].solar)) != EOF)
+                  data = increase_size(data, 1);
     printf("[completado]");
     return data;
 }
