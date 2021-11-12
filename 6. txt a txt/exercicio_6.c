@@ -5,7 +5,6 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "dvectors.h"
 
 //Declaración de funcións
@@ -26,7 +25,7 @@ int main(){
         printf("Erro: o arquivo %s non foi aberto", datos);
         return 1;
     }
-    
+
     //Pasa os datos do arquivo .txt a un vector dinámico
     printf("\nLendo enteiros de \"%s\"... ", datos);
     dvec dvector1;
@@ -34,7 +33,7 @@ int main(){
     printf("[completado]");
 
     fclose(fpr);
-    
+
     //Abre outro arquivo .txt en modo escritura
     char *resultados = "datos_ordenados.txt";
     FILE *fpw = fopen(resultados, "wt");
@@ -42,7 +41,7 @@ int main(){
         printf("Error: could not open file %s", resultados);
         return 1;
     }
-    
+
     //Garda os datos indicados (máximo, mínimo, media) no arquivo .txt
     printf("\nGardando resultados en \"%s\"... ", resultados);
     fprintf(fpw,"Maximo: %d\n", calcular_max(dvector1));
@@ -57,7 +56,7 @@ int main(){
 
 //Devolve un punteiro a un vector no que garda os enteiros contidos no arquivo .txt
 dvec file_to_vector(FILE *file) {
-    dvec dvector = new_vec();
+    dvec dvector = new_dvec();
     dvector.size = 0;
     do dvector = increase_size(dvector, 1);
     while(fscanf(file, "%d,", &dvector.vector[dvector.size-1]) != EOF);
@@ -95,4 +94,3 @@ float calcular_media(dvec dvector) {
     }   media /= (dvector.size*1.0);
     return media;
 }
-
