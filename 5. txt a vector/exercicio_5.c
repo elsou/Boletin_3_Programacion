@@ -74,7 +74,7 @@ int calcular_min(dvec dvector){
 float calcular_media(dvec dvector){
     float media = dvector.vector[0];
     for(int i = 1; i < dvector.size; i++){
-        media = media*(i/(i + 1.0)) + (dvector.vector[i]/(i + 1.0));
-    }
+        media += dvector.vector[i];
+    }   media /= (dvector.size*1.0);
     return media;
 }
