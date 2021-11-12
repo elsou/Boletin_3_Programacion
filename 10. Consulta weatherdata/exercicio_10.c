@@ -67,14 +67,14 @@ WeatherData consulta_por_data(FILE* file, Date d) {
 float consulta_precip_media(FILE* file, Date d1, Date d2) {
     WeatherData data;
     int inicio = days_since_2000(d1);
-    int final = days_since_2000(d2) - inicio;
-    float media;
+    int final = days_since_2000(d2) - inicio + 1;
+    float media = 0;
 
     fseek(file, sizeof(WeatherData)*(inicio - 1), SEEK_SET);
     for(int i = 0; i < final; i++){
         fread(&data, sizeof(WeatherData), 1, file);
-        media = media*(i/(i + 1.0)) + (data.precipitation/(i + 1.0));
-    }
+        media += data.precipitation;
+    }media = media/final;
 
     return media;
 }
