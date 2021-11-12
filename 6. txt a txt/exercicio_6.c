@@ -1,3 +1,4 @@
+
 /*  Boletín 3
  * Exercicio 6: -txt a .txt
  * Autor: Daniel Souto Pazó
@@ -55,18 +56,17 @@ int main(){
 }
 
 //Devolve un punteiro a un vector no que garda os enteiros contidos no arquivo .txt
-dvec file_to_vector(FILE *file){
+dvec file_to_vector(FILE *file) {
     dvec dvector = new_vec();
     dvector.size = 0;
-    do{
-        dvector = increase_size(dvector, 1);
-    }while(fscanf(file, "%d,", &dvector.vector[dvector.size-1]) != EOF);
+    do dvector = increase_size(dvector, 1);
+    while(fscanf(file, "%d,", &dvector.vector[dvector.size-1]) != EOF);
     dvector.size--;
     return dvector;
 }
 
 //Devolve a maior enteiro do vector proporcionado
-int calcular_max(dvec dvector){
+int calcular_max(dvec dvector) {
     int max = dvector.vector[0];
     for(int i = 1; i < dvector.size; i++){
         if(dvector.vector[i] > max){
@@ -77,7 +77,7 @@ int calcular_max(dvec dvector){
 }
 
 //Devolve a menor enteiro do vector proporcionado
-int calcular_min(dvec dvector){
+int calcular_min(dvec dvector) {
     int min = dvector.vector[0];
     for(int i = 1; i < dvector.size; i++){
         if(dvector.vector[i] < min){
@@ -88,11 +88,11 @@ int calcular_min(dvec dvector){
 }
 
 //Devolve a media entre todos os enteiros do vector proporcionado
-float calcular_media(dvec dvector){
+float calcular_media(dvec dvector) {
     float media = dvector.vector[0];
     for(int i = 1; i < dvector.size; i++){
-        media = media*(i/(i + 1.0))+(dvector.vector[i]/(i + 1.0));
-    }
+        media += dvector.vector[i];
+    }   media /= (dvector.size*1.0);
     return media;
 }
 
