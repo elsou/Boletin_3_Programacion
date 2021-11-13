@@ -30,8 +30,7 @@ int main(){
     printf("\nLendo enteiros de \"%s\"... ", datos);
     dvec dvector1;
     dvector1 = file_to_vector(fpr);
-    printf("[completado]");
-
+    printf("[completado]\n");
     fclose(fpr);
 
     //Abre outro arquivo .txt en modo escritura
@@ -42,11 +41,20 @@ int main(){
         return 1;
     }
 
-    //Garda os datos indicados (máximo, mínimo, media) no arquivo .txt
-    printf("\nGardando resultados en \"%s\"... ", resultados);
-    fprintf(fpw,"Maximo: %d\n", calcular_max(dvector1));
-    fprintf(fpw,"Minimo: %d\n", calcular_min(dvector1));
-    fprintf(fpw,"Media: %f\n", calcular_media(dvector1));
+    //Calcula o valor máximo, mínimo e a media
+    printf("Procesando os valores ");
+    print_vector(dvector1);
+    printf("...");
+    int max = calcular_max(dvector1);
+    int min = calcular_min(dvector1);
+    float med = calcular_media(dvector1);
+    printf("[completado]\n");
+
+    //Garda os resultados no arquivo .txt
+    printf("Gardando resultados en \"%s\"... ", resultados);
+    fprintf(fpw,"Maximo: %d\n", max);
+    fprintf(fpw,"Minimo: %d\n", min);
+    fprintf(fpw,"Media: %f\n", med);
     printf("[completado]\n");
 
     fclose(fpr);
