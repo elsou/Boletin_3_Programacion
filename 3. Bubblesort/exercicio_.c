@@ -11,7 +11,6 @@
 //Declaración de funcións
 void ordenar(dvec dvector);
 dvec input_to_vector();
-void print_vector(dvec dvector);
 void trocar(int *a, int *b);
 
 //-------------------------------------------------------//
@@ -19,7 +18,7 @@ void trocar(int *a, int *b);
 int main()
 {
     //O usuario introduce unha serie de enteiros que se almacenan nun vector dinámico
-    printf("\nEste programa ordena de menor a maior os elementos dun vector mediante o método da burbulla.\n");
+    printf("\nEste programa ordena de menor a maior os elementos dun vector mediante o metodo da burbulla.\n");
     printf("\nEscriba os seus elementos (enteiros) separados por comas:\n");
     dvec dvector1 = input_to_vector();
     printf("Vector introducido: ");
@@ -59,11 +58,11 @@ void ordenar(dvec dvector) {
 //Devolve un vector de enteiros a partir da input dada polo usuario
 dvec input_to_vector() {
     dvec dvector = new_dvec();
+    scanf(",");
     scanf("%d", &dvector.vector[0]);
-    while(scanf(",%d", &dvector.vector[dvector.size-1]) != 0) {
+    while(scanf(",%d", &dvector.vector[dvector.size]) != 0) {
         dvector = increase_size(dvector, 1);
     }
-
     return dvector;
 }
 
