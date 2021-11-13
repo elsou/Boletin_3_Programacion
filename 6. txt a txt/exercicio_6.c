@@ -28,7 +28,7 @@ int main(){
 
     //Pasa os datos do arquivo .txt a un vector dinámico
     printf("\nLendo enteiros de \"%s\"... ", datos);
-    dvec dvector1;
+    dvec dvector1 = new_dvec();
     dvector1 = file_to_vector(fpr);
     printf("[completado]\n");
     fclose(fpr);
