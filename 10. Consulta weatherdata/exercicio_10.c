@@ -23,7 +23,7 @@ int main()
         printf("Erro: O arquivo %s non foi aberto", datos_bin);
         return 1;
     }
-    
+
     //Este bucle repítese ata que o usuario decide finalizar as consultas.
     int r;
     do{
@@ -41,11 +41,14 @@ int main()
                 data2 = get_date();
                 //Ordenar as datas por orde cronolóxica axuda a simplificar os cálculos
                 if(data1.year*10000 + data1.month*100 + data1.day > data2.year*10000 + data2.month*100 + data2.day)
-                    trocar(&dia2, &dia1);
-                printf("\nA precipitacion media entre o %d/%d/%d e o %d/%d/%d foi de %f l/m^2\n", data1.day, data1.month, data1.year, data2.day, data2.month, data2.year, consulta_precip_media(bin, data1, data2));
+                    trocar_datas(&data1, &data2);
+                printf("\nA precipitacion media entre o %d/%d/%d e o %d/%d/%d foi de %f l/m^2\n",
+                       data1.day, data1.month, data1.year,
+                       data2.day, data2.month, data2.year,
+                       consulta_precip_media(bin, data1, data2));
             }else if(r == 1){
                 print_weatherdata(consulta_por_data(bin, data1));
-            }else 
+            }else
                 printf("Input non valida.\n");
         }
     }while(r != 3);
@@ -78,4 +81,5 @@ float consulta_precip_media(FILE* file, Date d1, Date d2) {
 
     return media;
 }
+
 
