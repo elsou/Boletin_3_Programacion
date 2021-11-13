@@ -27,8 +27,12 @@ int main()
     }
     
     //Pasa a información do arquivo a un vector dinámico
+    printf("\nLendo enteiros de \"%s\"... ", datos);
+    dvec dvector1;
     dvec dvector1 = new_dvec();
     dvector1 = file_to_vector(fp);
+    printf("[completado]\n");
+    fclose(fp);
     
     //Devolve os valores indicados
     printf("\nPara o vector ");
@@ -38,7 +42,6 @@ int main()
     printf("Minimo: %d\n", calcular_min(dvector1));
     printf("Media: %f\n", calcular_media(dvector1));
 
-    fclose(fp);
 
     return 0;
 }
