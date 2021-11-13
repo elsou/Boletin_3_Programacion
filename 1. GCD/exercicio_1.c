@@ -8,14 +8,15 @@
 #include <stdio.h>
 #include <math.h>
 
-//Declaración da función
+//Declaración das funcións
 int gcd(int a, int b);
+void trocar(int *a, int *b);
 
 int main()
 {
     //O usuario introduce dous enteiros
     int a,b;
-    printf("\nIntroduza dous enteiros para saber o seu maximo comun divisor:\n");
+    printf("\nIntroduza dous enteiros separados por espazos para saber o seu maximo comun divisor:\n");
     scanf("%d %d",&a,&b);
 
     //Imprímese o seu máximo común divisor
@@ -27,15 +28,20 @@ int main()
 
 //Utiliza o algoritmo de Euclides e devolve o máximo común divisor dos dous valores introducidos
 int gcd(int a, int b) {
-    int resultado, temp;
+    int resultado;
     while(a && b != 0){
-        if(abs(b) > abs(a)){
-            temp = a;
-            a = b;
-            b = temp;
-        }
+        if(abs(b) > abs(a))
+            trocar(&a,&b);
         a = a % b;
     }
     resultado = abs(a + b);
     return resultado;
+}
+
+//Intercambia a posición de memoria almacenada en cada un dos punteiros
+void trocar(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
