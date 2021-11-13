@@ -22,14 +22,12 @@ int main()
     printf("\nEste programa calcula a distancia entre duas datas.\n");
     printf("-En que formato prefire manexar as datas?\n (Para dd/mm/aaaa introduza 1)\n (Para mm/dd/aaaa introduza 2)\n");
     scanf("%c", &form);
-    
+
     //O usuario introduce dúas datas, que se intercambian para adaptarse á orde cronolóxica e facilitar os cálculos
     Date dia1 = ler();
     Date dia2 = ler();
-    printf("%02d/%02d/%04d", dia1.day, dia1.month, dia1.year);
-    if(dia1.year*10000 + dia1.month*100 + dia1.day > dia2.year*10000 + dia2.month*100 + dia2.day) 
+    if(dia1.year*10000 + dia1.month*100 + dia1.day > dia2.year*10000 + dia2.month*100 + dia2.day)
         trocar(&dia2, &dia1);
-    printf("%02d/%02d/%04d", dia1.day, dia1.month, dia1.year);
 
     //Calcúlase e imprímese a diferenza de días entre as dúas datas introducidas
     int distancia = calcular_distancia(dia1, dia2);
@@ -64,7 +62,7 @@ Date ler() {
     do{
         //Isto imprímese se houbo algún dato incorrecto na anterior volta
         if(data_invalida(temp).day)         printf("\nVolva intentalo (dia non valido)\n");
-        else if(data_invalida(temp).month)  printf("\nVolva intentalo (mes non valido)\n"); 
+        else if(data_invalida(temp).month)  printf("\nVolva intentalo (mes non valido)\n");
         else if(data_invalida(temp).year)   printf("\nVolva intentalo (ano non valido):\n");
         else{
 
