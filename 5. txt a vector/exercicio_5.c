@@ -25,15 +25,14 @@ int main()
         printf("Erro: o arquivo %s non foi aberto", filename);
         return 1;
     }
-    
+
     //Pasa a información do arquivo a un vector dinámico
-    printf("\nLendo enteiros de \"%s\"... ", datos);
-    dvec dvector1;
+    printf("\nLendo enteiros de \"%s\"... ", filename);
     dvec dvector1 = new_dvec();
     dvector1 = file_to_vector(fp);
     printf("[completado]\n");
     fclose(fp);
-    
+
     //Devolve os valores indicados
     printf("\nPara o vector ");
     print_vector(dvector1);
@@ -41,7 +40,6 @@ int main()
     printf("Maximo: %d\n", calcular_max(dvector1));
     printf("Minimo: %d\n", calcular_min(dvector1));
     printf("Media: %f\n", calcular_media(dvector1));
-
 
     return 0;
 }
