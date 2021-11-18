@@ -16,7 +16,7 @@ int days_in_year(Date d) {
     for(int i = 0; i < d.month-1; i++){
         resultado = resultado + meses[i];
     resultado = resultado + d.day;
-        
+    }
     return resultado;
 }
 
@@ -65,7 +65,7 @@ Date get_date(){
 }
 
 //Intercambia a posición de memoria almacenada en cada un dos punteiros
-void trocar(Date *dia1, Date *dia2) {
+void trocar_datas(Date *dia1, Date *dia2) {
     Date temp;
     temp = *dia1;
     *dia1 = *dia2;
